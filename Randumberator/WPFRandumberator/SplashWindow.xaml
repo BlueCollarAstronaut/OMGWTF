@@ -1,0 +1,91 @@
+﻿<Window x:Class="WPFRandumberator.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:wpfRandumerator="clr-namespace:WPFRandumerator"
+        xmlns:wpfRandumberator="clr-namespace:WPFRandumberator"
+        Title="Splash" Height="456" Width="717"
+        WindowStyle="None"
+        WindowStartupLocation ="CenterScreen"
+        ResizeMode="NoResize"
+        ShowInTaskbar ="False"
+        Topmost="True"
+        Loaded="SplashWindow_OnLoaded"
+>
+<Window.Resources>
+        <Storyboard x:Key="ShowLoadingMessage">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="txtLoading">
+                <EasingThicknessKeyFrame KeyTime="0:0:0" Value="0,213,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="0,80,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="HideLoadingMessage">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="txtLoading">
+                <EasingThicknessKeyFrame KeyTime="0:0:0" Value="0,80,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="0,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="TitleSplosion" Duration="00:00:02">
+            <DoubleAnimation From="0" To="56" Storyboard.TargetName="Title" Storyboard.TargetProperty="FontSize"></DoubleAnimation>
+            <DoubleAnimation From="0" To="1" Storyboard.TargetName="Title" Storyboard.TargetProperty="Opacity"></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="ShowSubTitle" Duration="00:00:01">
+            <DoubleAnimation From="0" To="1" Storyboard.TargetName="subTitle" Storyboard.TargetProperty="Opacity"></DoubleAnimation>
+        </Storyboard>
+</Window.Resources>    
+    
+    <Grid>
+        <Grid.Background>
+                <LinearGradientBrush EndPoint="0.504,1.5" StartPoint="0.504,0.03">
+                    <GradientStop x:Name="GradientStop1" Color="#FFFF4F34" Offset="0"/>
+                    <GradientStop x:Name="GradientStop2" Color="#FFFFFF2B" Offset="0.567"/>
+                    <GradientStop x:Name="GradientStop3" Color="#FFE2D109" Offset="0.666"/>
+            </LinearGradientBrush>
+            </Grid.Background>
+
+        <wpfRandumerator:AwesomeTextBlock 
+                x:Name="Title"
+                Text="Randumberator" 
+                FontFamily="Gill Sans" 
+                StrokeThickness="2" 
+                Stroke="#FF44529D" 
+                FontStyle="Italic" 
+                FontSize="56"
+                FontWeight="ExtraBold" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="686"
+                Height="142" Margin="0,0,0,146" Opacity="0">
+                <wpfRandumerator:AwesomeTextBlock.Fill>
+                    <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1.0">
+                        <GradientStop Color="#FF6176D1" Offset="0" />
+                        <GradientStop Color="Thistle" Offset="0.50" />
+                        <GradientStop Color="AliceBlue" Offset="0.46" />
+                        <GradientStop Color="Snow" Offset="1.0" />
+                    </LinearGradientBrush>
+                </wpfRandumerator:AwesomeTextBlock.Fill>
+            </wpfRandumerator:AwesomeTextBlock>
+            
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="213" Background="#00FFFFFF">
+                <Grid.OpacityMask>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#00000000" Offset="0.10"/>
+                            <GradientStop Color="#00000000" Offset="0.90"/>
+                            <GradientStop Color="White" Offset="0.491"/>
+                        </LinearGradientBrush>
+                    </Grid.OpacityMask>
+            <TextBlock 
+                x:Name="txtLoading" 
+                Text="TEST" VerticalAlignment="Top" Height="213" /> 
+        </Grid>
+        <TextBlock 
+            x:Name="subTitle" 
+            Opacity="0" 
+            Height="57" 
+            HorizontalAlignment="Left" 
+            Margin="85,149,0,0" 
+            Text="Elite Enterprise Pro+" 
+            VerticalAlignment="Top" 
+            Width="598" 
+            FontFamily="Vrinda" 
+            FontSize="24" />
+    </Grid>
+</Window>

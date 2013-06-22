@@ -1,0 +1,87 @@
+﻿<Window x:Class="WPFRandumberator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:wpf="clr-namespace:WPFRandumerator"
+        xmlns:wpfRandumberator="clr-namespace:WPFRandumberator"
+        xmlns:meshGeometries="clr-namespace:Petzold.MeshGeometries;assembly=Petzold.MeshGeometries"
+        Title="MainWindow" Height="382" Width="565">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#FF6176D1" Offset="0" />
+                <GradientStop Color="Thistle" Offset="0.50" />
+                <GradientStop Color="AliceBlue" Offset="0.46" />
+                <GradientStop Color="Snow" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Viewport3D>
+            <meshGeometries:Cylinder 
+                    Slices="12" 
+                    TextureType="Drawing" 
+                    Stacks="10"
+                    Point1="0 3 0" 
+                    Point2="0 2 0" 
+                    Radius1="3" Radius2="3"
+                    Fold1="0.5" Fold2="0.5">
+                <meshGeometries:Cylinder.Material>
+                    <DiffuseMaterial>
+                        <DiffuseMaterial.Brush>
+                            <DrawingBrush TileMode="Tile" Viewport="0 0.05 0.083 0.1">
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <GeometryDrawing Brush="#FFEFA518">
+                                            <GeometryDrawing.Geometry>
+                                                <RectangleGeometry Rect="0 0 10 10" />
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </DiffuseMaterial.Brush>
+                    </DiffuseMaterial>
+                </meshGeometries:Cylinder.Material>
+
+                <!-- Transform -->
+                <meshGeometries:Cylinder.Transform>
+                    <RotateTransform3D>
+                        <RotateTransform3D.Rotation>
+                            <AxisAngleRotation3D x:Name="rotate" Axis="1 0 0" />
+                        </RotateTransform3D.Rotation>
+                    </RotateTransform3D>
+                </meshGeometries:Cylinder.Transform>
+            </meshGeometries:Cylinder>
+
+            <!-- Lights -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <Model3DGroup>
+                        <DirectionalLight Color="White" Direction="2 -2 -8"/>
+                        <AmbientLight Color="#404040" />
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+            <!-- Camera -->
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="0 50 50" UpDirection="0 1 0"
+                           LookDirection="0 -1 -1" FieldOfView="45">
+                    <PerspectiveCamera.Transform>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="1 0 0" Angle="{Binding ElementName=scroll, Path=Value}" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </PerspectiveCamera.Transform>
+                </PerspectiveCamera>
+            </Viewport3D.Camera>
+        </Viewport3D>
+        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="210,283,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click_1" />
+    </Grid>
+<Window.Resources>
+        <Storyboard x:Key="CoinFlip">
+            <DoubleAnimation Storyboard.TargetName="rotate"
+                           Storyboard.TargetProperty="Angle"
+                           From="0" To="1080" Duration="0:0:3" 
+                            />
+        </Storyboard>
+    </Window.Resources>
+</Window>
