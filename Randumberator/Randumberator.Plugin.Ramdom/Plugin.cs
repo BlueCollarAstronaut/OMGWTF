@@ -3,6 +3,7 @@ using Randumberator.Core.Abstractions;
 
 namespace Randumberator.Plugin.Ramdom
 {
+    [PluginFactory(typeof(Factory))]
     public class Plugin
         : PluginBase
     {

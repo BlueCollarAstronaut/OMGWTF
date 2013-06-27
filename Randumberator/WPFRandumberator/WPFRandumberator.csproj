@@ -60,10 +60,32 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AwesomeTextBlock.cs" />
+    <Compile Include="FileNotFoundWindow.xaml.cs">
+      <DependentUpon>FileNotFoundWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HeadsWindow.xaml.cs">
+      <DependentUpon>HeadsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelBase.cs" />
+    <Compile Include="Circle.cs" />
     <Compile Include="MethodsAndStuff.cs" />
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TailsWindow.xaml.cs">
+      <DependentUpon>TailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="FileNotFoundWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeadsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,9 +98,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SplashWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +129,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="References\App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,11 +142,33 @@
       <Name>Randumberartor.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\penny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\heads.jpg" />
+    <Resource Include="Content\tails.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\Backgrounds\Chrysanthemum.jpg" />
+    <Resource Include="Content\Backgrounds\Desert.jpg" />
+    <Resource Include="Content\Backgrounds\Hydrangeas.jpg" />
+    <Resource Include="Content\Backgrounds\Jellyfish.jpg" />
+    <Resource Include="Content\Backgrounds\Koala.jpg" />
+    <Resource Include="Content\Backgrounds\Lighthouse.jpg" />
+    <Resource Include="Content\Backgrounds\Penguins.jpg" />
+    <Resource Include="Content\Backgrounds\Tulips.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd /s /q "$(TargetDir)Plugins"
 md "$(TargetDir)Plugins"
-md "$(TargetDir)Plugins\Repositories\"</PostBuildEvent>
+md "$(TargetDir)Plugins\Repositories\"
+rd /s /q "$(TargetDir)Content"
+md "$(TargetDir)Content\"
+md "$(TargetDir)Content\Backgrounds\"
+copy "$(ProjectDir)Content\Backgrounds\*.*" "$(TargetDir)Content\Backgrounds\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

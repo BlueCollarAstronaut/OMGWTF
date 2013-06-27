@@ -39,22 +39,11 @@ namespace Randumberator.Core
             }
         }
 
-        public static ITheUserExperience GetTheUserExperience(string path)
+        public static string GetMyPath(Type type)
         {
-            var qualifiedName = typeof (ITheUserExperience).AssemblyQualifiedName;
-            
-            foreach (var file in Directory.EnumerateFiles(path, "*.dll"))
-            {
-                var assembly = Assembly.LoadFile(file);
-                var types = 
-                    assembly.GetTypes().Where(x => x.GetInterface("ITheUserExperience", false) != null).ToArray();
-                if (types.Length > 0)
-                {
-                    var ctor = types[0].GetConstructor(new Type[] {});
-                    return ctor.Invoke(new object[] {}) as ITheUserExperience;
-                }
-            }
-            return null;
+            Assembly thisAss = Assembly.GetAssembly(type);
+            string thisFolder = Path.GetDirectoryName(thisAss.Location);
+            return thisFolder;
         }
     }
 }

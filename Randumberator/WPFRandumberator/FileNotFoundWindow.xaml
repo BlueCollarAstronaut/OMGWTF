@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPFRandumberator.FileNotFoundWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FileNotFoundWindow" Height="289" Width="294" VerticalContentAlignment="Stretch" WindowStartupLocation="CenterOwner">
+    <Grid Name="MainWindow" Height="254" Width="276">
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#FF397922" Offset="0" />
+                <GradientStop Color="#FF397922" Offset="0.50" />
+                <GradientStop Color="#FF397922" Offset="0.46" />
+                <GradientStop Color="#FF397922" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>        
+        <Image Source="Content\penny.png" Margin="0,0,0,41">
+        </Image>
+        <Button Content="FileNotFound?!" Height="23" HorizontalAlignment="Left" Margin="0,211,0,0" Name="button1" VerticalAlignment="Top" Width="159" Click="button1_Click" />
+    </Grid>
+</Window>

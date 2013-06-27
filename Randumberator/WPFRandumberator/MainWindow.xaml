@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:wpf="clr-namespace:WPFRandumerator"
         xmlns:wpfRandumberator="clr-namespace:WPFRandumberator"
         xmlns:meshGeometries="clr-namespace:Petzold.MeshGeometries;assembly=Petzold.MeshGeometries"
-        Title="MainWindow" Height="382" Width="565">
-    <Grid>
+        Title="MainWindow" Height="563" Width="664" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Stretch">
+    <Grid Name="MainGrid">
         <Grid.Background>
             <LinearGradientBrush>
                 <GradientStop Color="#FF6176D1" Offset="0" />
@@ -13,18 +13,22 @@
                 <GradientStop Color="Snow" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Viewport3D>
+        <Viewport3D Margin="0,0,0,71">
             <meshGeometries:Cylinder 
-                    Slices="12" 
-                    TextureType="Drawing" 
+                    Slices="24" 
+                    TextureType="Image" 
                     Stacks="10"
-                    Point1="0 3 0" 
-                    Point2="0 2 0" 
-                    Radius1="3" Radius2="3"
-                    Fold1="0.5" Fold2="0.5">
+                    Point1="0 5 0" 
+                    Point2="0 6 0" 
+                    Radius1="10" Radius2="10"
+                    Fold1="0" Fold2="0">
                 <meshGeometries:Cylinder.Material>
                     <DiffuseMaterial>
                         <DiffuseMaterial.Brush>
+                            <ImageBrush ImageSource="/WPFRandumberator;component/Content/penny.png">
+                            </ImageBrush>
+                        </DiffuseMaterial.Brush>
+                        <!--<DiffuseMaterial.Brush>
                             <DrawingBrush TileMode="Tile" Viewport="0 0.05 0.083 0.1">
                                 <DrawingBrush.Drawing>
                                     <DrawingGroup>
@@ -36,7 +40,7 @@
                                     </DrawingGroup>
                                 </DrawingBrush.Drawing>
                             </DrawingBrush>
-                        </DiffuseMaterial.Brush>
+                        </DiffuseMaterial.Brush>-->
                     </DiffuseMaterial>
                 </meshGeometries:Cylinder.Material>
 
@@ -74,14 +78,34 @@
                 </PerspectiveCamera>
             </Viewport3D.Camera>
         </Viewport3D>
-        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="210,283,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click_1" />
+        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="0,394,0,0" Name="button1" VerticalAlignment="Top" Width="628" Click="button1_Click_1" />
+        <ListBox Height="101" HorizontalAlignment="Left" Margin="0,411,0,0" Name="listBox1" VerticalAlignment="Top" Width="630" />
     </Grid>
 <Window.Resources>
-        <Storyboard x:Key="CoinFlip">
+        <Storyboard x:Key="CoinFlipHeadsToHeads">
             <DoubleAnimation Storyboard.TargetName="rotate"
                            Storyboard.TargetProperty="Angle"
                            From="0" To="1080" Duration="0:0:3" 
                             />
         </Storyboard>
+        <Storyboard x:Key="CoinFlipHeadsToTails">
+            <DoubleAnimation Storyboard.TargetName="rotate"
+                           Storyboard.TargetProperty="Angle"
+                           From="0" To="900" Duration="0:0:3" 
+                            />
+        </Storyboard>
+        <Storyboard x:Key="CoinFlipTailsToTails">
+            <DoubleAnimation Storyboard.TargetName="rotate"
+                           Storyboard.TargetProperty="Angle"
+                           From="180" To="900" Duration="0:0:3" 
+                            />
+        </Storyboard>
+        <Storyboard x:Key="CoinFlipTailsToHeads">
+            <DoubleAnimation Storyboard.TargetName="rotate"
+                           Storyboard.TargetProperty="Angle"
+                           From="180" To="1080" Duration="0:0:3" 
+                            />
+        </Storyboard>    
+    
     </Window.Resources>
 </Window>

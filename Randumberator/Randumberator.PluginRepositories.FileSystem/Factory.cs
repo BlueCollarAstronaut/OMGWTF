@@ -18,9 +18,8 @@ namespace Randumberator.PluginRepositories.FileSystem
             try
             {
                 // Assume this is a sub-folder of the plugins folder
-                Assembly thisAss = Assembly.GetAssembly(this.GetType());
-                string thisFolder = Path.GetDirectoryName(thisAss.Location);
-                string parentFolder = Directory.GetParent(thisFolder).FullName;
+                string myFolder = Utilities.GetMyPath(typeof(Factory));
+                string parentFolder = Directory.GetParent(myFolder).FullName;
                 return new PluginRepository(parentFolder);
             }
             catch (Exception)
