@@ -36,6 +36,30 @@ namespace WPFRandumberator
             
             // Build the collection of background images:
             string backgrounImagePath = MethodsAndStuff.GetPath(ConfigurationManager.AppSettings.Get("BackgroundImagePath"));
+            
+            
+            // Figure out if the debug info should be hidden.
+            // NOTE: 
+            bool hideDebugInfo = false;
+            try
+            {
+                hideDebugInfo = Boolean.Parse(ConfigurationManager.AppSettings.Get("HideDebugInfo").ToString());
+            }
+            catch (Exception ex) { 
+                // Ignore;
+            }
+            if (hideDebugInfo == true)
+            {
+                listBox1.Visibility = (hideDebugInfo) ? Visibility.Hidden : Visibility.Visible;
+            }
+            else if (hideDebugInfo != true)
+            {
+                listBox1.Visibility = Visibility.Visible;
+            }
+
+
+
+
             try
             {
                 _backgroundPool = Directory.GetFiles(backgrounImagePath);
@@ -58,7 +82,8 @@ namespace WPFRandumberator
                 _coinFlipHeadsToTails.Completed += new EventHandler(_storeboard_Completed);
                 _coinFlipTailsToHeads.Completed += new EventHandler(_storeboard_Completed);
                 _coinFlipTailsToTails.Completed += new EventHandler(_storeboard_Completed);
-            }       
+            }
+
 
             // Define delegate
             _onShowStoryboard = OnShowStoryboard;
@@ -141,7 +166,7 @@ namespace WPFRandumberator
                         (newResult) ? _coinFlipTailsToHeads : _coinFlipTailsToTails;
                     previousResult = newResult;
 
-                    string message = string.Format("{0} gave result of {1}",
+                    string message = string.Format("Plugin [{0}] was selected and gave result of {1}",
                             plugin.ToString(),
                             randomResult.ToString());
                     listBox1.Items.Add(message);
@@ -152,7 +177,7 @@ namespace WPFRandumberator
                 }
                 finally
                 {
-                    isFlipping = false;
+                    //isFlipping = false;
                 }
             }
         }
@@ -160,6 +185,7 @@ namespace WPFRandumberator
         void _storeboard_Completed(object sender, EventArgs e)
         {
             DisplayResult(previousResult);
+            isFlipping = false;
         }
     }
 }

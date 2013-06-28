@@ -24,11 +24,11 @@
                     Fold1="0" Fold2="0">
                 <meshGeometries:Cylinder.Material>
                     <DiffuseMaterial>
-                        <DiffuseMaterial.Brush>
+                        <!--<DiffuseMaterial.Brush>
                             <ImageBrush ImageSource="/WPFRandumberator;component/Content/penny.png">
                             </ImageBrush>
-                        </DiffuseMaterial.Brush>
-                        <!--<DiffuseMaterial.Brush>
+                        </DiffuseMaterial.Brush>-->
+                        <DiffuseMaterial.Brush>
                             <DrawingBrush TileMode="Tile" Viewport="0 0.05 0.083 0.1">
                                 <DrawingBrush.Drawing>
                                     <DrawingGroup>
@@ -40,7 +40,7 @@
                                     </DrawingGroup>
                                 </DrawingBrush.Drawing>
                             </DrawingBrush>
-                        </DiffuseMaterial.Brush>-->
+                        </DiffuseMaterial.Brush>
                     </DiffuseMaterial>
                 </meshGeometries:Cylinder.Material>
 
@@ -78,7 +78,7 @@
                 </PerspectiveCamera>
             </Viewport3D.Camera>
         </Viewport3D>
-        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="0,394,0,0" Name="button1" VerticalAlignment="Top" Width="628" Click="button1_Click_1" />
+        <Button Content="Flip It!" Height="23" HorizontalAlignment="Left" Margin="0,394,0,0" Name="button1" VerticalAlignment="Top" Width="628" Click="button1_Click_1" />
         <ListBox Height="101" HorizontalAlignment="Left" Margin="0,411,0,0" Name="listBox1" VerticalAlignment="Top" Width="630" />
     </Grid>
 <Window.Resources>
